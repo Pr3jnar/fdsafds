@@ -50,7 +50,7 @@ public class TableModelObdelnik extends AbstractTableModel {
 
     *
     *
-    toto nejspis v panelu westovskym
+    toto nejspis v panelu westovskym, predelat to tak aby v tom panelu to bylo ne rozhazeny ve tridach
     vyuziti poslední napovedy JTable horni tabulka = new Jatable();
     HorniMOdel m = new HorniMOdel();
     horniTabulka.setModel(m);

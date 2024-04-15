@@ -19,6 +19,9 @@ public class Obdelnik implements MujTvar{
         this.barva = barva;
     }
 
+    public Obdelnik() {
+    }
+
     public int getVyska() {
         return vyska;
     }
