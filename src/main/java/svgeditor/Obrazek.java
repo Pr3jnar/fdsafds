@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Obrazek {
 
 
@@ -17,6 +18,11 @@ public class Obrazek {
 
     private List<MujTvar> tvars = new ArrayList<>();
 
+    public void pridatTvar(MujTvar tvar) {
+        tvars.add(tvar);
+         // Vyvolá překreslení obrazce po přidání nového tvaru
+    }
+
     public Obrazek() {
 
         addTvar(new Obdelnik(100,200,600,600,10,Color.YELLOW));
@@ -25,6 +31,7 @@ public class Obrazek {
         addTvar(new Usecka(200,300,1000,200,50,Color.CYAN));
         addTvar(new Obdelnik(100,200,600,100,10,Color.CYAN));
     }
+
 
 
 }

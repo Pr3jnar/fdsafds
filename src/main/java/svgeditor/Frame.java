@@ -23,13 +23,5 @@ public class Frame extends JFrame {
         setVisible(true);
 
 
-
-        //vytvořit JTable
-        //pomocí add ji někam přidat
-        //vytvořeit table model
-        //např. new EmptytableModel()
-        //přidat model do tabulky
-        //pomocí setModel
-
     }
 }

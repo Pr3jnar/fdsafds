@@ -4,83 +4,16 @@ import java.awt.*;
 
 
 public class TableModelObdelnik extends AbstractTableModel {
-
+    HlPanel hlPanel;
     Obdelnik obdelnik;
     public TableModelObdelnik(Obdelnik obdelnik){
         this.obdelnik = obdelnik;
     }
-    //private static final int COLUMN_COUNT = 6;
-    /* public class ModelObdelniku extends AbstractTableModel{
-    Obdelnik obdelnik;
-    public ModelObdelniku(Obdelnik obdelnik){
-            this.obdelnik = obdelnik;
-    }
-
-
-    }
-
-    * if (columnIndex==1){
-
-
-            switch (rowIndex){
-            case 0:
-                 return obdelnik getPoziceX;
-
-            case 1:
-                if (tvar instanceof Obdelnik) {
-                    return ((Obdelnik) tvar).getPoziceY();}
-
-            case 2:
-                if (tvar instanceof Obdelnik) {
-                    return ((Obdelnik) tvar).getSirka();}
-            case 3:
-                if (tvar instanceof Obdelnik) {
-                    return ((Obdelnik) tvar).getVyska();}
-            case 4:
-                if (tvar instanceof Obdelnik) {
-                    return ((Obdelnik) tvar).getBarva();}
-
-            case 5:
-                if (tvar instanceof Obdelnik) {
-                    return ((Obdelnik) tvar).getTlouska();}
-
-            default:
-                return null;}
-        }
-
-    *
-    *
-    toto nejspis v panelu westovskym, predelat to tak aby v tom panelu to bylo ne rozhazeny ve tridach
-    vyuziti poslední napovedy JTable horni tabulka = new Jatable();
-    HorniMOdel m = new HorniMOdel();
-    horniTabulka.setModel(m);
-
-    m.getSelectionModel().addSelectionListener(e->{
-    int row = horniTabulka.getSelectedRow();
-    Tvar tvar = obrazek.getTvary().get(row);
-
-
-    if(tvar instanceof Obdelik){
-    AbstractTableMOdel m2 = new ModelObdelniku((Obdelnik)tvar);
-    dolniTabulka.setModel(m2);
-
-    }else if(tvar instanceof Usecka){
-    AbstractTableMOdel m2 = new ModelUsecky(tvar);
-    dolniTabulka.setModel(m2);
-    })
-
-
-    ////nebo to lze delat pres metodu getSpecificModel() kterou bychom si vytvorili
-    * */
 
 
     private Obrazek obrazek;
 
 
-    /*public TableModelObdelnik(Obrazek obrazek) {
-        this.obrazek = obrazek;
-
-    }*/
 
     @Override
     public int getRowCount() {
@@ -113,7 +46,7 @@ public class TableModelObdelnik extends AbstractTableModel {
                 return null;
         }}
         if (columnIndex==1){
-            //MujTvar tvar = obrazek.getTvars().get(0);//nulu upravit zatím to díky této nule bere pouze první prvek v listu tvars
+
 
             switch (rowIndex){
             case 0:
@@ -136,12 +69,38 @@ public class TableModelObdelnik extends AbstractTableModel {
                 return null;}
         }
 
-
-
     return null;}
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        // Make cells editable only in specific columns (e.g., column 0)
+
         return columnIndex == 1;
+    }
+    public void setValueAt(Object value, int rowIndex, int columnIndex) {
+        // Nastav hodnotu v obdelníku podle změněné hodnoty v tabulce
+        if (columnIndex == 1) {
+            switch (rowIndex) {
+                case 0:
+                    obdelnik.setPoziceX((int) value);
+                    break;
+                case 1:
+                    obdelnik.setPoziceY((int) value);
+                    break;
+                case 2:
+                    obdelnik.setSirka((int) value);
+                    break;
+                case 3:
+                    obdelnik.setVyska((int) value);
+                    break;
+                case 4:
+                    obdelnik.setBarva((Color) value);
+                    break;
+                case 5:
+                    obdelnik.setTlouska((int) value);
+                    break;
+            }
+
+            // Překresli obrazec
+            hlPanel.repaint();
+        }
     }
 }
 /*
