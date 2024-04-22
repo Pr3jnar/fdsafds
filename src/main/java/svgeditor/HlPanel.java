@@ -9,6 +9,7 @@ public class HlPanel extends JPanel {
     private Obrazek obrazek;
 
     public HlPanel(Obrazek obrazek){
+
         this.obrazek = obrazek;
     }
 
@@ -20,9 +21,6 @@ public class HlPanel extends JPanel {
             tvar.Draw(graphics2D);
         }
 
-
-
-
-
     }
+
 }

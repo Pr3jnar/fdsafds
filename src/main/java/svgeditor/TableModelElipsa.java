@@ -1,8 +1,10 @@
 package svgeditor;
 
 import javax.swing.table.AbstractTableModel;
+import java.awt.*;
 
 public class TableModelElipsa extends AbstractTableModel {
+    HlPanel hlPanel;
     Elipsa elipsa;
     public TableModelElipsa(Elipsa elipsa){
 
@@ -64,6 +66,25 @@ public class TableModelElipsa extends AbstractTableModel {
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         // Make cells editable only in specific columns (e.g., column 0)
         return columnIndex == 1;
+    }
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex)
+    {
+        if(columnIndex == 1)
+        {
+            switch (rowIndex)
+            {
+                case 0: elipsa.setPoziceX(Integer.parseInt(aValue.toString())); break;
+                case 1: elipsa.setPoziceY(Integer.parseInt(aValue.toString()));break;
+                case 2: elipsa.setSirka(Integer.parseInt(aValue.toString()));break;
+                case 3: elipsa.setVyska(Integer.parseInt(aValue.toString()));break;
+                case 4: elipsa.setBarva(Color.decode(aValue.toString()));break;
+                case 5: elipsa.setTlouska(Integer.parseInt(aValue.toString()));break;
+            }
+
+
+            fireTableDataChanged();
+
+        }
     }
     }
 

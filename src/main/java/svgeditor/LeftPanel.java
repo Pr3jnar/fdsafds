@@ -1,16 +1,20 @@
 package svgeditor;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+
+
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.util.EventListenerProxy;
+
 
 public class LeftPanel extends JPanel {
+    HlPanel hlPanel;
+    Obrazek obrazek;
 
-    public LeftPanel() {
-        Obrazek obrazek = new Obrazek();
+
+    public LeftPanel(Obrazek obrazek, HlPanel hlpanel) {
+        this.obrazek = obrazek;
+        this.hlPanel = hlpanel;
+
         setPreferredSize(new Dimension(350,0));
 
         setBackground(Color.BLUE);
@@ -20,6 +24,8 @@ public class LeftPanel extends JPanel {
         TableModel1 m1 = new TableModel1(new Obrazek());
         horniTabulka.setModel(m1);
         add(horniTabulka);
+        add(dolniTabulka);
+
 
 
         horniTabulka.getSelectionModel().addListSelectionListener(e->{
@@ -29,22 +35,22 @@ public class LeftPanel extends JPanel {
             if(tvar instanceof Obdelnik){
                 TableModelObdelnik m2 = new TableModelObdelnik((Obdelnik)tvar);
                 dolniTabulka.setModel(m2);
-                add(dolniTabulka);
+
 
             }else if (tvar instanceof Elipsa) {
                 TableModelElipsa m2 = new TableModelElipsa((Elipsa) tvar);
                 dolniTabulka.setModel(m2);
-                add(dolniTabulka);
+
             }else if (tvar instanceof Usecka) {
                 TableModelUsecka m2 = new TableModelUsecka((Usecka) tvar);
                 dolniTabulka.setModel(m2);
-                add(dolniTabulka);
+
             }
 
             });
 
 
-
-
-
+        dolniTabulka.addPropertyChangeListener(evt -> {
+            hlPanel.repaint();
+        });
     }}

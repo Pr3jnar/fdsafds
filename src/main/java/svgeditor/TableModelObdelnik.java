@@ -4,16 +4,10 @@ import java.awt.*;
 
 
 public class TableModelObdelnik extends AbstractTableModel {
-    HlPanel hlPanel;
     Obdelnik obdelnik;
     public TableModelObdelnik(Obdelnik obdelnik){
         this.obdelnik = obdelnik;
     }
-
-
-    private Obrazek obrazek;
-
-
 
     @Override
     public int getRowCount() {
@@ -74,36 +68,54 @@ public class TableModelObdelnik extends AbstractTableModel {
 
         return columnIndex == 1;
     }
-    public void setValueAt(Object value, int rowIndex, int columnIndex) {
-        // Nastav hodnotu v obdelníku podle změněné hodnoty v tabulce
-        if (columnIndex == 1) {
-            switch (rowIndex) {
-                case 0:
-                    obdelnik.setPoziceX((int) value);
-                    break;
-                case 1:
-                    obdelnik.setPoziceY((int) value);
-                    break;
-                case 2:
-                    obdelnik.setSirka((int) value);
-                    break;
-                case 3:
-                    obdelnik.setVyska((int) value);
-                    break;
-                case 4:
-                    obdelnik.setBarva((Color) value);
-                    break;
-                case 5:
-                    obdelnik.setTlouska((int) value);
-                    break;
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex)
+    {
+        if(columnIndex == 1)
+        {
+            switch (rowIndex)
+            {
+                case 0: obdelnik.setPoziceX(Integer.parseInt(aValue.toString())); break;
+                case 1: obdelnik.setPoziceY(Integer.parseInt(aValue.toString()));break;
+                case 2: obdelnik.setSirka(Integer.parseInt(aValue.toString()));break;
+                case 3: obdelnik.setVyska(Integer.parseInt(aValue.toString()));break;
+                case 4: obdelnik.setBarva(Color.decode(aValue.toString()));break;
+                case 5: obdelnik.setTlouska(Integer.parseInt(aValue.toString()));break;
             }
 
-            // Překresli obrazec
-            hlPanel.repaint();
+
+            fireTableDataChanged();
+
         }
     }
-}
-/*
-*
-*
-* */
+    /*public void setValueAt(Object value, int rowIndex, int columnIndex) {
+        if (columnIndex == 1) {
+        switch (columnIndex) {
+            case 1:
+                switch (rowIndex) {
+                    case 0:
+                        obdelnik.setPoziceX((int) value);
+                        break;
+                    case 1:
+                        obdelnik.setPoziceY((int) value);
+                        break;
+                    case 2:
+                        obdelnik.setSirka((int) value);
+                        break;
+                    case 3:
+                        obdelnik.setVyska((int) value);
+                        break;
+                    case 4:
+                        obdelnik.setBarva((Color) value);
+                        break;
+                    case 5:
+                        obdelnik.setTlouska((int) value);
+                        break;
+                }
+                break;
+        }
+        }*/
+        // Překresli obrazec
+
+
+    }
+

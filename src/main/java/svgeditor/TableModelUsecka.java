@@ -1,6 +1,7 @@
 package svgeditor;
 
 import javax.swing.table.AbstractTableModel;
+import java.awt.*;
 
 public class TableModelUsecka extends AbstractTableModel {
 
@@ -66,6 +67,26 @@ public class TableModelUsecka extends AbstractTableModel {
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         // Make cells editable only in specific columns (e.g., column 0)
         return columnIndex == 1;
+    }
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex)
+    {
+        if(columnIndex == 1)
+        {
+            switch (rowIndex)
+            {
+                case 0: usecka.setPoziceX(Integer.parseInt(aValue.toString())); break;
+                case 1: usecka.setPoziceY(Integer.parseInt(aValue.toString()));break;
+                case 2: usecka.setSirka(Integer.parseInt(aValue.toString()));break;
+                case 3: usecka.setVyska(Integer.parseInt(aValue.toString()));break;
+                case 4: usecka.setBarva(Color.decode(aValue.toString()));break;
+                case 5: usecka.setTlouska(Integer.parseInt(aValue.toString()));break;
+            }
+
+
+
+            fireTableDataChanged();
+
+        }
     }
     }
 
