@@ -2,52 +2,52 @@ package svgeditor;
 import java.awt.*;
 
 public class Usecka implements MujTvar{
-    private int vyska;
-    private int sirka;
-    private int poziceX;
-    private int poziceY;
+    private int x1;
+    private int y1;
+    private int x2;
+    private int y2;
     private int tlouska;
     private Color barva;
 
-    public Usecka(int vyska, int sirka, int poziceX, int poziceY, int tlouska, Color barva) {
-        this.vyska = vyska;
-        this.sirka = sirka;
-        this.poziceX = poziceX;
-        this.poziceY = poziceY;
+    public Usecka(int x1, int y1, int x2, int y2, int tlouska, Color barva) {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
         this.tlouska = tlouska;
         this.barva = barva;
     }
 
-    public int getVyska() {
-        return vyska;
+    public int getX1() {
+        return x1;
     }
 
-    public void setVyska(int vyska) {
-        this.vyska = vyska;
+    public void setX1(int x1) {
+        this.x1 = x1;
     }
 
-    public int getSirka() {
-        return sirka;
+    public int getY1() {
+        return y1;
     }
 
-    public void setSirka(int sirka) {
-        this.sirka = sirka;
+    public void setY1(int y1) {
+        this.y1 = y1;
     }
 
-    public int getPoziceX() {
-        return poziceX;
+    public int getX2() {
+        return x2;
     }
 
-    public void setPoziceX(int poziceX) {
-        this.poziceX = poziceX;
+    public void setX2(int x2) {
+            this.x2 = x2;
     }
 
-    public int getPoziceY() {
-        return poziceY;
+    public int getY2() {
+        return y2;
     }
 
-    public void setPoziceY(int poziceY) {
-        this.poziceY = poziceY;
+    public void setY2(int y2) {
+        this.y2 = y2;
     }
 
     public int getTlouska() {
@@ -70,6 +70,6 @@ public class Usecka implements MujTvar{
     public void Draw(Graphics2D g) {
         g.setColor(barva);
         g.setStroke(new BasicStroke(tlouska));
-        g.drawLine(poziceX,poziceY,tlouska,vyska);
+        g.drawLine(x1,y1,x2,y2);
     }
 }

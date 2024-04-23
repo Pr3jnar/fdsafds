@@ -54,7 +54,7 @@ public class TableModelElipsa extends AbstractTableModel {
                 case 3:
                     return elipsa.getVyska();
                 case 4:
-                    return elipsa.getBarva();
+                    return colorToHex(elipsa.getBarva());
 
                 case 5:
                     return elipsa.getTlouska();
@@ -77,7 +77,7 @@ public class TableModelElipsa extends AbstractTableModel {
                 case 1: elipsa.setPoziceY(Integer.parseInt(aValue.toString()));break;
                 case 2: elipsa.setSirka(Integer.parseInt(aValue.toString()));break;
                 case 3: elipsa.setVyska(Integer.parseInt(aValue.toString()));break;
-                case 4: elipsa.setBarva(Color.decode(aValue.toString()));break;
+                case 4: elipsa.setBarva(hexToColor(aValue.toString())); break;
                 case 5: elipsa.setTlouska(Integer.parseInt(aValue.toString()));break;
             }
 
@@ -85,6 +85,12 @@ public class TableModelElipsa extends AbstractTableModel {
             fireTableDataChanged();
 
         }
+    }
+    private Color hexToColor(String hex) {
+        return Color.decode(hex);
+    }
+    private String colorToHex(Color color) {
+        return String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
     }
     }
 
