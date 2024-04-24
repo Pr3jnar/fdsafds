@@ -18,10 +18,6 @@ public class Obrazek {
 
     private List<MujTvar> tvars = new ArrayList<>();
 
-    public void pridatTvar(MujTvar tvar) {
-        tvars.add(tvar);
-         // Vyvolá překreslení obrazce po přidání nového tvaru
-    }
 
     public Obrazek() {
 

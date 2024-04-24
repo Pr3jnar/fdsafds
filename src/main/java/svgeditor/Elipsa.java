@@ -69,6 +69,7 @@ public class Elipsa implements MujTvar{
 
     @Override
     public void Draw(Graphics2D g) {
+
         g.setColor(barva);
         g.setStroke(new BasicStroke(tlouska));
         g.drawOval(poziceX,poziceY,sirka,vyska);

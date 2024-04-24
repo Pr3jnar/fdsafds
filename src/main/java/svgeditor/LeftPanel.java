@@ -21,7 +21,7 @@ public class LeftPanel extends JPanel {
         setLayout(new GridLayout(2,1));
         JTable horniTabulka = new JTable();
         JTable dolniTabulka = new JTable();
-        TableModel1 m1 = new TableModel1(new Obrazek());
+        TableModel1 m1 = new TableModel1(obrazek);
         horniTabulka.setModel(m1);
         add(horniTabulka);
         add(dolniTabulka);
@@ -49,8 +49,13 @@ public class LeftPanel extends JPanel {
 
             });
 
-
         dolniTabulka.addPropertyChangeListener(evt -> {
             hlPanel.repaint();
         });
-    }}
+
+    }
+
+
+    }
+
+
